@@ -8,11 +8,11 @@ import Footer from "../components/Footer"
 export default function Layout() {
   return (
     <SidebarProvider>
-      <AppSidebar />
       <Navbar />
-      <main>
-        <Outlet />
-      <Footer />
+      <AppSidebar />
+      <main >
+          <Outlet />
+          <Footer />
       </main>
     </SidebarProvider>
   )
