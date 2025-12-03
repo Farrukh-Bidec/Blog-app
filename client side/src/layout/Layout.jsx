@@ -8,12 +8,18 @@ import Footer from "../components/Footer"
 export default function Layout() {
   return (
     <SidebarProvider>
-      <Navbar />
-      <AppSidebar />
-      <main >
-          <Outlet />
-          <Footer />
-      </main>
+      <div className="flex flex-col min-h-screen w-full">
+        <Navbar />
+
+        <div className="flex flex-1">
+          <AppSidebar />
+          <main className="w-full">
+            <Outlet />
+        <Footer />
+          </main>
+        </div>
+
+      </div>
     </SidebarProvider>
   )
 }

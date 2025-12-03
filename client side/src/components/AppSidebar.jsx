@@ -1,14 +1,11 @@
 import React from 'react'
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from './ui/sidebar'
+import { Circle } from 'lucide-react'
 
 const items = [
   {
     title: "Home",
     url: "/",
-  },
-  {
-    title: "Blogs",
-    url: "/blogs",
   },
   {
     title: "Services",
@@ -26,10 +23,9 @@ const items = [
 const AppSidebar = () => {
   return (
     <div>
-      <Sidebar>
-        <SidebarContent>
+      <Sidebar className={"bg-gray-100/50"}>
+        <SidebarContent className={"mt-20 bg-gray-100/50  "}>
           <SidebarGroup>
-            <SidebarGroupLabel>Application</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {items.map((item) => (
@@ -43,7 +39,19 @@ const AppSidebar = () => {
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
+            <SidebarGroupLabel>Filter</SidebarGroupLabel>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton >
+                  <a href="#" className='flex gap-2 items-center'>
+                    <Circle size={10} className='bg-black rounded-full' /><span>Blogs</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+
             </SidebarGroupContent>
+
           </SidebarGroup>
         </SidebarContent>
       </Sidebar>

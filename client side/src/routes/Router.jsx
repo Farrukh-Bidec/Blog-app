@@ -4,6 +4,7 @@ import Services from '../pages/Services'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Index from '../pages/Index'
+import Form from '../pages/Form'
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
             <Route index element={<Index />}  />
             <Route path='/blogs' element={<Blogs />}  />
         </Route>
+            <Route path='/form' element={<Form />}  />
     </Routes>
   )
 }

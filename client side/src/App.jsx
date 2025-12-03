@@ -1,9 +1,13 @@
 import React from 'react'
 import Router from './routes/Router'
+import { ToastContainer } from 'react-toastify'
 
 const App = () => {
   return (
-    <div><Router /> </div>
+    <div>
+      <Router />
+      <ToastContainer />
+    </div>
   )
 }
 
