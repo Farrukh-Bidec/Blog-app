@@ -1,8 +1,28 @@
-import { Search } from 'lucide-react';
+import { Search, User } from 'lucide-react';
 import React from 'react';
 import { Button } from './ui/button';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLogout } from '@/store/slice.auth';
+import { Logout } from '@/lib/form';
+import { useNavigate } from 'react-router-dom';
+import Dropdown from './Dropdown';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const { isLogin } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+
+  const logoutHandler = async () => {
+    try {
+      await Logout()
+      navigate('/form')
+      dispatch(setLogout());
+
+    } catch (error) {
+      console.log("Caught Error" , error)
+    }
+  }
+
   return (
     <nav className="flex flex-col sm:flex-row sm:justify-between items-center px-6 py-4 sm:h-20 w-full bg-white text-black shadow-md z-11">
       {/* Logo */}
@@ -21,9 +41,14 @@ const Navbar = () => {
       </div>
 
       {/* Logout button */}
-      <Button className="my-2 sm:my-0 bg-black text-white hover:bg-gray-800">
-        Logout
-      </Button>
+      {isLogin ? 
+      <Dropdown />
+       :
+
+        <Button className="my-2 sm:my-0 bg-black text-white hover:bg-gray-800" onClick={()=> navigate('/form')}>
+          Log in / Register
+        </Button>
+      }
     </nav>
   );
 };
