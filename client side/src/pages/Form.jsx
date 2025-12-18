@@ -34,8 +34,9 @@ export default function Form() {
       setTimeout(() => setMessage(""), 5000);
       setLoginData({ email: '', password: '' });
       navigate('/');
+      console.log(response)
       dispatch(setUser(response.user))
-      toast.success(`Welcome back ! ${response.user.name}`);
+      toast.success(`Welcome ! ${response.user.name}`);
     } catch (error) {
       setMessage({ type: 'error', text: error.response?.data?.message || 'Login failed. Please try again.' });
     } finally {
@@ -46,6 +47,7 @@ export default function Form() {
   // ---------------- SIGNUP -------------------
   const handleSignup = async (e) => {
     e.preventDefault();
+    
     setLoading(true);
     setMessage({ type: '', text: '' });
     try {
